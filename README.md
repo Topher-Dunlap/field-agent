@@ -3,17 +3,16 @@
 
 
 ####Time Estimations
-    * Base project, basic data layer & models, tests - 3.5 hours
-    * Find slice - data, domain, ui, tests: 3 hours
-    * Create, Update, Delete - data, domain, tests ui: 3.5 hours
-    * Panel Entry, ToLine, writeToFile, tests: 3 hours
-    * TOTAL = 13 hours
+* Security Clearance Slice: Actual Hours - 10 hours
+* Aliases Slice: Actual Hours - 6 hours
+* Global Error Handling: 1.5
+* TOTAL = 17.5 hours
 
 ####Actual Time
-* Base project: Actual Hours - 5 hours
-* Find slice: Actual Hours - 3 hours
-* Create, Update, Delete: Actual Hours -
-* Panel Entry: Actual Hours -
+* Security Clearance Slice: Actual Hours - 
+* Aliases Slice: Actual Hours -
+* Global Error Handling: Actual Hours -
+
 
 
 ## Set Up
