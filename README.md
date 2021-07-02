@@ -14,7 +14,6 @@
 * Global Error Handling: Actual Hours -
 
 
-
 ## Set Up
 
 **Project Set Up**
@@ -28,7 +27,7 @@
 
 ## Security Clearance Slices
 **findAll()**
-* [ ] Create the `SecurityController`
+* [ ] Create the `SecurityClearenceController`
 * [ ] Create the `SecurityClearanceService`
 * [ ] Define the `SecurityClearanceJdbcTemplateRepository` findAll()
 * [ ] Define the `SecurityClearanceService` findAll()
@@ -40,7 +39,7 @@
 **findByID()**
 * [ ] Define the `SecurityClearanceJdbcTemplateRepository` findById()
 * [ ] Define the `SecurityClearanceService` findById()
-* [ ] Define the `SecurityController` findById()
+* [ ] Define the `SecurityClearenceController` findById()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` findById() Tests
 * [ ] Create the `Domain` findById() Tests
@@ -48,7 +47,7 @@
 **add()**
 * [ ] Define the `SecurityClearanceJdbcTemplateRepository` add()
 * [ ] Define the `SecurityClearanceService` add()
-* [ ] Define the `SecurityController` add()
+* [ ] Define the `SecurityClearenceController` add()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` add() Tests
 * [ ] Create the `Domain` add() Tests
@@ -56,7 +55,7 @@
 **update()**
 * [ ] Define the `SecurityClearanceJdbcTemplateRepository` update()
 * [ ] Define the `SecurityClearanceService` update()
-* [ ] Define the `SecurityController` update()
+* [ ] Define the `SecurityClearenceController` update()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` update() Tests
 * [ ] Create the `Domain` update() Tests
@@ -65,7 +64,7 @@
 * [ ] Develop strategy for delete()
 * [ ] Define the `SecurityClearanceJdbcTemplateRepository` delete()
 * [ ] Define the `SecurityClearanceService` delete()
-* [ ] Define the `SecurityController` delete()
+* [ ] Define the `SecurityClearenceController` delete()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` delete() Tests
 * [ ] Create the `Domain` delete() Tests
@@ -73,21 +72,25 @@
 
 
 ## Aliases Slices
+* [ ] Create the `AliasJdbcTemplateRepository`
+* [ ] Create the `AliasService`
+* [ ] Create the `AliasService`
+
 **Fetch Agent**
 * [ ] Fetch an individual agent with aliases attached
 
 **add()**
-* [ ] Define the `AgentJdbcTemplateRepository` add()
-* [ ] Define the `AgentService` add()
-* [ ] Define the `AgentController` add()
+* [ ] Define the `AliasJdbcTemplateRepository` add()
+* [ ] Define the `AliasService` add()
+* [ ] Define the `SecurityClearenceController` add()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` add() Tests
 * [ ] Create the `Domain` add() Tests
 
 **update()**
-* [ ] Define the `AgentJdbcTemplateRepository` update()
-* [ ] Define the `AgentService` update()
-* [ ] Define the `AgentController` update()
+* [ ] Define the `AliasJdbcTemplateRepository` update()
+* [ ] Define the `AliasService` update()
+* [ ] Define the `AliasController` update()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` update() Tests
 * [ ] Create the `Domain` update() Tests
@@ -95,7 +98,7 @@
 **delete()**
 * [ ] Define the `AgentJdbcTemplateRepository` delete()
 * [ ] Define the `AgentClearanceService` delete()
-* [ ] Define the `AgentController` delete()
+* [ ] Define the `AliasController` delete()
 * [ ] Create HTTP request.
 * [ ] Create the `Data` delete() Tests
 * [ ] Create the `Domain` delete() Tests
