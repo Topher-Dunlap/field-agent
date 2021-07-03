@@ -1,11 +1,12 @@
 package learn.field_agent.controllers;
 
+import learn.field_agent.domain.Result;
 import learn.field_agent.domain.SecurityClearanceService;
+import learn.field_agent.models.Agent;
 import learn.field_agent.models.SecurityClearance;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +24,19 @@ public class SecurityClearanceController {
     @GetMapping
     public List<SecurityClearance> findAll() {
         return service.findAll();
+    }
+
+    @GetMapping("/{securityClearanceId}")
+    public SecurityClearance findById(@PathVariable int securityClearanceId) {
+        return service.findById(securityClearanceId);
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> add(@RequestBody SecurityClearance securityClearance) {
+        Result<SecurityClearance> result = service.add(securityClearance);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
     }
 }

@@ -24,7 +24,7 @@
 * [x] Create Github repo
 * [x] Push unaltered project
 * [x] Carry over inserts from test DB to production DB
-* [ ] Explore codebase
+* [x] Explore codebase
 
 ## Security Clearance Slices
 **findAll()**
@@ -34,22 +34,23 @@
 * [x] Define the `SecurityClearanceService` findAll()
 * [x] Define the `SecurityController` findAll()
 * [X] Create HTTP request.
-* [ ] Create the `Data` findAll() Tests
-* [ ] Create the `Domain` findAll() Tests
+* [x] Create the `Data` findAll() Tests
+* [x] Create the `Domain` findAll() Tests
 
 **findByID()**
-* [ ] Define the `SecurityClearanceJdbcTemplateRepository` findById()
-* [ ] Define the `SecurityClearanceService` findById()
-* [ ] Define the `SecurityClearenceController` findById()
-* [ ] Create HTTP request.
-* [ ] Create the `Data` findById() Tests
-* [ ] Create the `Domain` findById() Tests
+* [x] Define the `SecurityClearanceJdbcTemplateRepository` findById()
+* [x] Define the `SecurityClearanceService` findById()
+* [x] Define the `SecurityClearenceController` findById()
+* [x] Create HTTP request.
+* [x] Create the `Data` findById() Tests
+* [x] Create the `Domain` findById() Tests
 
 **add()**
-* [ ] Define the `SecurityClearanceJdbcTemplateRepository` add()
-* [ ] Define the `SecurityClearanceService` add()
-* [ ] Define the `SecurityClearenceController` add()
-* [ ] Create HTTP request.
+* [x] Define the `SecurityClearanceJdbcTemplateRepository` add()
+* [x] Define the `SecurityClearanceService` add()
+* [x] Define the `SecurityClearenceController` add()
+* [x] Create HTTP request.
+* [x] Add duplicate validation.
 * [ ] Create the `Data` add() Tests
 * [ ] Create the `Domain` add() Tests
 

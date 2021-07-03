@@ -5,8 +5,13 @@ import learn.field_agent.data.mappers.SecurityClearanceMapper;
 import learn.field_agent.models.Agent;
 import learn.field_agent.models.SecurityClearance;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -24,16 +29,32 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
         return jdbcTemplate.query(sql, new SecurityClearanceMapper());
     }
 
-
     @Override
-    public SecurityClearance findById(int securityClearanceId) {
-
-        final String sql = "select security_clearance_id, name security_clearance_name "
+    public SecurityClearance findById(int security_clearance_id) {
+        final String sql = "select security_clearance_id, name name "
                 + "from security_clearance "
                 + "where security_clearance_id = ?;";
-
-        return jdbcTemplate.query(sql, new SecurityClearanceMapper(), securityClearanceId)
+        return jdbcTemplate.query(sql, new SecurityClearanceMapper(), security_clearance_id)
                 .stream()
                 .findFirst().orElse(null);
+    }
+
+    @Override
+    public SecurityClearance add(SecurityClearance securityClearance) {
+        final String sql = "insert into security_clearance (name) " + " values (?);";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, securityClearance.getName());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+
+        securityClearance.setSecurityClearanceId(keyHolder.getKey().intValue());
+        return securityClearance;
     }
 }

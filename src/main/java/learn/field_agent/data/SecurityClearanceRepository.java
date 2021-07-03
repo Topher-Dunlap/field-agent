@@ -7,4 +7,5 @@ import java.util.List;
 public interface SecurityClearanceRepository {
     SecurityClearance findById(int securityClearanceId);
     List<SecurityClearance> findAll();
+    SecurityClearance add(SecurityClearance securityClearance);
 }
