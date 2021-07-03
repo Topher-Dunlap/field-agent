@@ -23,16 +23,17 @@
 * [x] Add readme.md file
 * [x] Create Github repo
 * [x] Push unaltered project
+* [x] Carry over inserts from test DB to production DB
 * [ ] Explore codebase
 
 ## Security Clearance Slices
 **findAll()**
-* [ ] Create the `SecurityClearenceController`
-* [ ] Create the `SecurityClearanceService`
-* [ ] Define the `SecurityClearanceJdbcTemplateRepository` findAll()
-* [ ] Define the `SecurityClearanceService` findAll()
-* [ ] Define the `SecurityController` findAll()
-* [ ] Create HTTP request.
+* [x] Create the `SecurityClearenceController`
+* [x] Create the `SecurityClearanceService`
+* [x] Define the `SecurityClearanceJdbcTemplateRepository` findAll()
+* [x] Define the `SecurityClearanceService` findAll()
+* [x] Define the `SecurityController` findAll()
+* [X] Create HTTP request.
 * [ ] Create the `Data` findAll() Tests
 * [ ] Create the `Domain` findAll() Tests
 
@@ -107,3 +108,6 @@
 * [ ] Use the @ControllerAdvice annotation to register an exception handler for all controllers.
 * [ ] Determine the most precise exception for data integrity failures and handle it with a specific data integrity message.
 * [ ] For all other exceptions, create a general "sorry, not sorry" response that doesn't share exception details.
+
+## High Level
+* [ ] Change known good state procedure

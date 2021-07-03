@@ -7,7 +7,7 @@
     <groupId>learn</groupId>
     <artifactId>field-agent</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+  //test
     <properties>
         <maven.compiler.source>1.11</maven.compiler.source>
         <maven.compiler.target>1.11</maven.compiler.target>
@@ -45,7 +45,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Testing -->
+        <!-- testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

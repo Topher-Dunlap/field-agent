@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/security_clearance
+Accept: application/json
