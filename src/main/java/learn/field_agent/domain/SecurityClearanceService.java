@@ -1,6 +1,8 @@
 package learn.field_agent.domain;
 
+import learn.field_agent.data.AgencyAgentJdbcTemplateRepository;
 import learn.field_agent.data.SecurityClearanceRepository;
+import learn.field_agent.models.AgencyAgent;
 import learn.field_agent.models.SecurityClearance;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,10 @@ import java.util.List;
 public class SecurityClearanceService {
 
     private final SecurityClearanceRepository repository;
+    private final AgencyAgentJdbcTemplateRepository agencyAgentRepository;
 
-    public SecurityClearanceService(SecurityClearanceRepository repository) {
-        this.repository = repository;
+    public SecurityClearanceService(SecurityClearanceRepository repository, AgencyAgentJdbcTemplateRepository agencyAgentRepository) { this.repository = repository;
+        this.agencyAgentRepository = agencyAgentRepository;
     }
 
     public List<SecurityClearance> findAll() {
@@ -58,6 +61,30 @@ public class SecurityClearanceService {
         return result;
     }
 
+    public Result<Boolean> deleteById(int securityClearanceId) {
+        Result<Boolean> result = new Result<>();
+
+        //check that clearance with ID exists
+        SecurityClearance clearanceToDelete = findById(securityClearanceId);
+        if(clearanceToDelete == null){
+            String msg = String.format("Security Clearance Id: %s, not found", securityClearanceId);
+            result.addMessage(msg, ResultType.NOT_FOUND);
+            return result;
+        }
+
+        //make sure clearance does not have relationship to Agency Agent bridge table
+        List<AgencyAgent> agencyAgents = agencyAgentRepository.findAll();
+        for(AgencyAgent agencyAgent : agencyAgents){
+            if (agencyAgent.getSecurityClearance().getSecurityClearanceId() == securityClearanceId) {
+                result.addMessage("Cannot delete Security Clearance with Agency Agent relationship", ResultType.INVALID);
+                return result;
+            }
+        }
+
+        repository.deleteById(securityClearanceId);
+        return result;
+    }
+
     private Result<SecurityClearance> validate(SecurityClearance securityClearance) {
         Result<SecurityClearance> result = new Result<>();
         if (securityClearance == null) {
@@ -73,7 +100,7 @@ public class SecurityClearanceService {
         List<SecurityClearance> securityClearances = findAll();
         for(SecurityClearance existingClearance : securityClearances){
             if (Validations.isDuplicateString(securityClearance.getName(), existingClearance.getName())) {
-                result.addMessage("Cannot be a duplicate", ResultType.INVALID);
+                result.addMessage("Cannot be a duplicate name", ResultType.INVALID);
             }
         }
 

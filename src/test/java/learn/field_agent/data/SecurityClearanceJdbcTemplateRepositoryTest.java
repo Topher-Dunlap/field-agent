@@ -1,10 +1,10 @@
 package learn.field_agent.data;
 
-import learn.field_agent.models.Agency;
-import learn.field_agent.models.Agent;
 import learn.field_agent.models.SecurityClearance;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,23 +13,39 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class SecurityClearanceJdbcTemplateRepositoryTest {
 
+    @Autowired
     SecurityClearanceJdbcTemplateRepository repository;
 
-    public SecurityClearanceJdbcTemplateRepositoryTest() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-        repository = context.getBean(SecurityClearanceJdbcTemplateRepository.class);
+//    public SecurityClearanceJdbcTemplateRepositoryTest() {
+//        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
+//        repository = context.getBean(SecurityClearanceJdbcTemplateRepository.class);
+//    }
+
+//    @BeforeAll
+//    static void oneTimeSetup() {
+//        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
+//        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
+//        jdbcTemplate.update("call set_known_good_state();");
+//    }
+
+    final static int NEXT_ID = 9;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    KnownGoodState knownGoodState;
+
+    @BeforeEach
+    void setup() {
+        knownGoodState.set();
     }
 
-    @BeforeAll
-    static void oneTimeSetup() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
-        jdbcTemplate.update("call set_known_good_state();");
-    }
 
     @Test
     void shouldFindAll() {
@@ -49,16 +65,34 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         actual = repository.findById(2);
         assertEquals(topSecret, actual);
 
-        actual = repository.findById(3);
+        actual = repository.findById(100);
         assertEquals(null, actual);
     }
 
     @Test
-    void shouldAddAgency() {
-        SecurityClearance securityClearance = new SecurityClearance();
-        securityClearance.setName("TEST");
-        SecurityClearance actual = repository.add(securityClearance);
+    void shouldAddSecurityClearance() {
+        // all fields
+        SecurityClearance securityClearance1 = new SecurityClearance();
+        securityClearance1.setName("testAdd1");
+        SecurityClearance actual = repository.add(securityClearance1);
         assertNotNull(actual);
-        assertEquals(4, actual.getSecurityClearanceId());
+        assertEquals(NEXT_ID, actual.getSecurityClearanceId());
+
+        // null dob
+        SecurityClearance securityClearance2 = new SecurityClearance();
+        securityClearance2.setName("testAdd2");
+        actual = repository.add(securityClearance2);
+        assertNotNull(actual);
+        assertEquals(NEXT_ID + 1, actual.getSecurityClearanceId());
+}
+
+    @Test
+    void shouldUpdateSecurityClearance() {
+        SecurityClearance securityClearance = new SecurityClearance();
+        securityClearance.setSecurityClearanceId(3);
+        securityClearance.setName("TEST");
+
+        assertTrue(repository.update(securityClearance));
     }
+
 }

@@ -17,11 +17,11 @@ public class AgencyAgentMapper implements RowMapper<AgencyAgent> {
         agencyAgent.setActivationDate(resultSet.getDate("activation_date").toLocalDate());
         agencyAgent.setActive(resultSet.getBoolean("is_active"));
 
-        SecurityClearanceMapper securityClearanceMapper = new SecurityClearanceMapper();
-        agencyAgent.setSecurityClearance(securityClearanceMapper.mapRow(resultSet, i));
+        SecurityClearanceIdMapper securityClearanceIdMapper = new SecurityClearanceIdMapper();
+        agencyAgent.setSecurityClearance(securityClearanceIdMapper.mapRow(resultSet, i));
 
-        AgentMapper agentMapper = new AgentMapper();
-        agencyAgent.setAgent(agentMapper.mapRow(resultSet, i));
+        AgentIdMapper agentIdMapper = new AgentIdMapper();
+        agencyAgent.setAgent(agentIdMapper.mapRow(resultSet, i));
 
         return agencyAgent;
     }

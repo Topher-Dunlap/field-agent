@@ -22,3 +22,6 @@ Content-Type: application/json
   "security_clearance_id": "4",
   "name": "Z Clearance"
 }
+
+###
+DELETE http://localhost:8080/api/security_clearance/6 HTTP/1.1
