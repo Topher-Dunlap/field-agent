@@ -39,4 +39,16 @@ public class SecurityClearanceController {
         }
         return ErrorResponse.build(result);
     }
+
+    @PutMapping("/{securityClearanceId}")
+    public ResponseEntity<Object> update(@PathVariable int securityClearanceId, @RequestBody SecurityClearance securityClearance) {
+        securityClearance.setSecurityClearanceId(securityClearanceId);
+
+        Result<SecurityClearance> result = service.update(securityClearance);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
 }

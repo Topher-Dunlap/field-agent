@@ -51,14 +51,14 @@
 * [x] Define the `SecurityClearenceController` add()
 * [x] Create HTTP request.
 * [x] Add duplicate validation.
-* [ ] Create the `Data` add() Tests
-* [ ] Create the `Domain` add() Tests
+* [x] Create the `Data` add() Tests
+* [x] Create the `Domain` add() Tests
 
 **update()**
-* [ ] Define the `SecurityClearanceJdbcTemplateRepository` update()
-* [ ] Define the `SecurityClearanceService` update()
-* [ ] Define the `SecurityClearenceController` update()
-* [ ] Create HTTP request.
+* [x] Define the `SecurityClearanceJdbcTemplateRepository` update()
+* [x] Define the `SecurityClearanceService` update()
+* [x] Define the `SecurityClearenceController` update()
+* [x] Create HTTP request.
 * [ ] Create the `Data` update() Tests
 * [ ] Create the `Domain` update() Tests
 
