@@ -59,24 +59,29 @@
 * [x] Define the `SecurityClearanceService` update()
 * [x] Define the `SecurityClearenceController` update()
 * [x] Create HTTP request.
-* [ ] Create the `Data` update() Tests
-* [ ] Create the `Domain` update() Tests
+* [x] Create the `Data` update() Tests
+* [x] Create the `Domain` update() Tests
 
 **delete()**
-* [ ] Develop strategy for delete()
-* [ ] Define the `SecurityClearanceJdbcTemplateRepository` delete()
-* [ ] Define the `SecurityClearanceService` delete()
-* [ ] Define the `SecurityClearenceController` delete()
-* [ ] Create HTTP request.
-* [ ] Create the `Data` delete() Tests
-* [ ] Create the `Domain` delete() Tests
-
+* [x] Develop strategy for delete()
+* [x] Define the `SecurityClearanceJdbcTemplateRepository` delete()
+* [x] Define the `SecurityClearanceService` delete()
+* [x] Define the `SecurityClearenceController` delete()
+* [x] Create HTTP request.
+* [x] Create the `Data` delete() Tests
+* [x] Create the `Domain` delete() Tests
 
 
 ## Aliases Slices
-* [ ] Create the `AliasJdbcTemplateRepository`
-* [ ] Create the `AliasService`
-* [ ] Create the `AliasService`
+* [x] Create the `AliasJdbcTemplateRepository`
+* [x] Create the `AliasJdbcTemplateRepositoryTest`
+* [x] Create the `AliasRepository` interface
+* [x] Create the `AliasService`
+* [x] Create the `AliasServiceTest`
+* [x] Create the `alias.http`
+* [x] Create the `alias.controller`
+* [x] Create the `alias.mapper`
+* [x] Create the `Alias` model
 
 **Fetch Agent**
 * [ ] Fetch an individual agent with aliases attached

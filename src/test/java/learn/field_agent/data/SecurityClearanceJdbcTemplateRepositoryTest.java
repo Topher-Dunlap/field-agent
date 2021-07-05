@@ -95,4 +95,10 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         assertTrue(repository.update(securityClearance));
     }
 
+    @Test
+    void shouldDeleteSecurityClearance() {
+        int securityClearanceId = 12;
+        assertTrue(repository.deleteById(securityClearanceId));
+    }
+
 }

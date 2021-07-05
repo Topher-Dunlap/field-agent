@@ -1,2 +1,4 @@
-package learn.field_agent.data;public class AliasJdbcTemplateRepositoryTest {
+package learn.field_agent.data;
+
+public class AliasJdbcTemplateRepositoryTest {
 }

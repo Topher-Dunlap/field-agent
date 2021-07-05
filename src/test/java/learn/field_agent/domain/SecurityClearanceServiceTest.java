@@ -57,6 +57,20 @@ public class SecurityClearanceServiceTest {
         assertEquals(ResultType.INVALID, result.getType());
     }
 
+    @Test
+    void shouldNotDeleteWhenIdDoesNotExist() {
+        int securityClearanceId = 1000;
+        Result<Boolean> result = service.deleteById(securityClearanceId);
+        assertEquals(ResultType.NOT_FOUND, result.getType());
+    }
+
+    @Test
+    void shouldNotDeleteWhenClearanceInUseByAgencyAgent() {
+        int securityClearanceId = 1;
+        Result<Boolean> result = service.deleteById(securityClearanceId);
+        assertEquals(ResultType.INVALID, result.getType());
+    }
+
 //    @Test
 //    void shouldNotAddWhenValid() {
 //        SecurityClearance expected = new SecurityClearance();

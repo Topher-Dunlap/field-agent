@@ -1,2 +1,4 @@
-package learn.field_agent.domain;public class AliasService {
+package learn.field_agent.domain;
+
+public class AliasService {
 }
