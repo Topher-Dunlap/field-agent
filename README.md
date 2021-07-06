@@ -87,33 +87,33 @@
 * [ ] Fetch an individual agent with aliases attached
 
 **add()**
-* [ ] Define the `AliasJdbcTemplateRepository` add()
-* [ ] Define the `AliasService` add()
-* [ ] Define the `SecurityClearenceController` add()
-* [ ] Create HTTP request.
-* [ ] Create the `Data` add() Tests
-* [ ] Create the `Domain` add() Tests
+* [x] Define the `AliasJdbcTemplateRepository` add()
+* [x] Define the `AliasService` add()
+* [x] Define the `AliasController` add()
+* [x] Create HTTP request.
+* [x] Create the `Data` add() Tests
+* [x] Create the `Domain` add() Tests
 
 **update()**
-* [ ] Define the `AliasJdbcTemplateRepository` update()
-* [ ] Define the `AliasService` update()
-* [ ] Define the `AliasController` update()
-* [ ] Create HTTP request.
-* [ ] Create the `Data` update() Tests
-* [ ] Create the `Domain` update() Tests
+* [x] Define the `AliasJdbcTemplateRepository` update()
+* [x] Define the `AliasService` update()
+* [x] Define the `AliasController` update()
+* [x] Create HTTP request.
+* [x] Create the `Data` update() Tests
+* [x] Create the `Domain` update() Tests
 
 **delete()**
-* [ ] Define the `AgentJdbcTemplateRepository` delete()
-* [ ] Define the `AgentClearanceService` delete()
-* [ ] Define the `AliasController` delete()
-* [ ] Create HTTP request.
-* [ ] Create the `Data` delete() Tests
-* [ ] Create the `Domain` delete() Tests
+* [x] Define the `AliasJdbcTemplateRepository` delete()
+* [x] Define the `AliasClearanceService` delete()
+* [x] Define the `AliasController` delete()
+* [x] Create HTTP request.
+* [x] Create the `Data` delete() Tests
+* [x] Create the `Domain` delete() Tests
 
 ## Global Error Handling
 * [ ] Use the @ControllerAdvice annotation to register an exception handler for all controllers.
-* [ ] Determine the most precise exception for data integrity failures and handle it with a specific data integrity message.
-* [ ] For all other exceptions, create a general "sorry, not sorry" response that doesn't share exception details.
+* [x] Determine the most precise exception for data integrity failures and handle it with a specific data integrity message.
+* [x] For all other exceptions, create a general "sorry, not sorry" response that doesn't share exception details.
 
 ## High Level
 * [ ] Change known good state procedure
