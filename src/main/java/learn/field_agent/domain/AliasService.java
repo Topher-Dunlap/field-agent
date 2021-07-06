@@ -61,15 +61,22 @@ public class AliasService {
         return repository.deleteById(aliasId);
     }
 
-    private Result<Alias> validate(Alias alias) {
+    private Result<Alias> validate(Alias newAlias) {
         Result<Alias> result = new Result<>();
-        if (alias == null) {
+        if (newAlias == null) {
             result.addMessage("Alias cannot be null", ResultType.INVALID);
             return result;
         }
 
-        if (Validations.isNullOrBlank(alias.getName())) {
+        if (Validations.isNullOrBlank(newAlias.getName())) {
             result.addMessage("Name is required", ResultType.INVALID);
+        }
+
+        List<Alias> aliases = findAll();
+        for(Alias existingAlias : aliases){
+            if(newAlias.getName().equals(existingAlias.getName()) && newAlias.getPersona().equals(existingAlias.getPersona())){
+                result.addMessage("Duplicate named aliases need to have a different Persona.", ResultType.INVALID);
+            }
         }
 
         return result;
