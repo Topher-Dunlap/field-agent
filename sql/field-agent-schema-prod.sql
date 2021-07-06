@@ -101,7 +101,6 @@ insert into security_clearance values
 	(1, 'Secret'),
     (2, 'Top Secret');
     
-    
     insert into agency(agency_id, short_name, long_name) values
         (1, 'ACME', 'Agency to Classify & Monitor Evildoers'),
         (2, 'MASK', 'Mobile Armored Strike Kommand'),
@@ -127,6 +126,14 @@ insert into security_clearance values
 		('Urban','H','Carwithen',null,58),
 		('Ulises','B','Muhammad','2008-04-01',80),
 		('Phylys','Y','Howitt','1979-03-28',68);
+        
+insert into alias
+	(alias_id, `name`, persona, agent_id)
+    values
+	(1, 'Alford', 'Head butler of Batman', 2),
+	(2, 'Iron Man', 'Some kind of robot person', 3),
+	(3, 'Odd Man', 'A very odd man.', 4);
+    
         
 	insert into agency_agent 
 		(agency_id, agent_id, identifier, security_clearance_id, activation_date)

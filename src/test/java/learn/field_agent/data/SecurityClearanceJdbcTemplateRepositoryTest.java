@@ -1,37 +1,21 @@
 package learn.field_agent.data;
 
 import learn.field_agent.models.SecurityClearance;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 class SecurityClearanceJdbcTemplateRepositoryTest {
 
     @Autowired
     SecurityClearanceJdbcTemplateRepository repository;
-
-//    public SecurityClearanceJdbcTemplateRepositoryTest() {
-//        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-//        repository = context.getBean(SecurityClearanceJdbcTemplateRepository.class);
-//    }
-
-//    @BeforeAll
-//    static void oneTimeSetup() {
-//        ApplicationContext context = new AnnotationConfigApplicationContext(DbTestConfig.class);
-//        JdbcTemplate jdbcTemplate = context.getBean(JdbcTemplate.class);
-//        jdbcTemplate.update("call set_known_good_state();");
-//    }
 
     final static int NEXT_ID = 9;
 
@@ -45,7 +29,6 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
     void setup() {
         knownGoodState.set();
     }
-
 
     @Test
     void shouldFindAll() {
@@ -91,7 +74,6 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
         SecurityClearance securityClearance = new SecurityClearance();
         securityClearance.setSecurityClearanceId(3);
         securityClearance.setName("TEST");
-
         assertTrue(repository.update(securityClearance));
     }
 
