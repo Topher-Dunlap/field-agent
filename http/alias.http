@@ -2,10 +2,6 @@
 GET http://localhost:8080/api/alias
 Accept: application/json
 
-### findAll()
-#GET http://localhost:8080/api/agent
-#Accept: application/json
-
 ### findById()
 GET http://localhost:8080/api/alias/1
 Accept: application/json

@@ -100,18 +100,20 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
-	delete from location;
-    delete from agency_agent;
-	delete from agency;
-	alter table agency auto_increment = 1;
-    delete from agent;
-    alter table agent auto_increment = 1;
-	delete from alias;
-    alter table alias auto_increment = 1;
--- 	delete from security_clearance;
---     alter table security_clearance auto_increment = 1;
+SET SQL_SAFE_UPDATES = 0;
 
-    
+	delete from location;
+    alter table location AUTO_INCREMENT = 1;
+	delete from agency_agent;
+    alter table agency_agent AUTO_INCREMENT = 1;
+	delete from agency;
+    alter table agency AUTO_INCREMENT = 1;
+	delete from agent;
+    alter table agent AUTO_INCREMENT = 1;
+	truncate table alias;
+	delete from security_clearance;
+    alter table security_clearance AUTO_INCREMENT = 1;
+
     insert into agency(agency_id, short_name, long_name) values
         (1, 'ACME', 'Agency to Classify & Monitor Evildoers'),
         (2, 'MASK', 'Mobile Armored Strike Kommand'),
@@ -161,7 +163,8 @@ begin
 	(1, 'Alford', 'Head butler of Batman', 2),
 	(2, 'Iron Man', 'Some kind of robot person', 3),
 	(3, 'Odd Man', 'A very odd man.', 4);
-    
+  
+SET SQL_SAFE_UPDATES = 1;
 
 end //
 -- 4. Change the statement terminator back to the original.
