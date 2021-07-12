@@ -34,9 +34,10 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
     @Transactional
     public Agent findById(int agentId) {
 
-        final String sql = "select agent_id, first_name, middle_name, last_name, dob, height_in_inches "
+        final String sql = "select agent.agent_id, first_name, middle_name, last_name, dob, height_in_inches, alias.`name`, alias.persona"
                 + "from agent "
-                + "where agent_id = ?;";
+                + "join alias on alias.agent_id = agent.agent_id"
+                + "where agent.agent_id = ?;";
 
         Agent agent = jdbcTemplate.query(sql, new AgentMapper(), agentId).stream()
                 .findFirst().orElse(null);

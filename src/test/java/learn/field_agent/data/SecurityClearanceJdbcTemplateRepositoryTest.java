@@ -17,7 +17,7 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
     @Autowired
     SecurityClearanceJdbcTemplateRepository repository;
 
-    final static int NEXT_ID = 9;
+    final static int NEXT_ID = 3;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -71,15 +71,14 @@ class SecurityClearanceJdbcTemplateRepositoryTest {
 
     @Test
     void shouldUpdateSecurityClearance() {
-        SecurityClearance securityClearance = new SecurityClearance();
-        securityClearance.setSecurityClearanceId(3);
+        SecurityClearance securityClearance = repository.findById(1);
         securityClearance.setName("TEST");
         assertTrue(repository.update(securityClearance));
     }
 
     @Test
     void shouldDeleteSecurityClearance() {
-        int securityClearanceId = 12;
+        int securityClearanceId = 2;
         assertTrue(repository.deleteById(securityClearanceId));
     }
 

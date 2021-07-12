@@ -2,13 +2,10 @@ package learn.field_agent.data;
 
 import learn.field_agent.models.Agent;
 import learn.field_agent.models.Alias;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -22,7 +19,7 @@ public class AliasJdbcTemplateRepositoryTest {
     @Autowired
     AliasJdbcTemplateRepository repository;
 
-    final static int NEXT_ID = 9;
+    final static int NEXT_ID = 4;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -54,21 +51,16 @@ public class AliasJdbcTemplateRepositoryTest {
     void shouldAdd() {
         // all fields
         Alias alias = new Alias();
+        alias.setAgent_id(1);
+        alias.setName("harvey");
         Alias actual = repository.add(alias);
         assertNotNull(actual);
         assertEquals(NEXT_ID, actual.getAlias_id());
-
-        // null dob
-        Alias alias2 = new Alias();
-        alias2.setName(null);
-        actual = repository.add(alias2);
-        assertNotNull(actual);
-        assertEquals(NEXT_ID + 1, actual.getAlias_id());
     }
 
     @Test
     void shouldUpdate() {
-        Alias alias = new Alias();
+        Alias alias = repository.findById(1);
         alias.setName("Jack Dull");
         assertTrue(repository.update(alias));
         alias.setAlias_id(13);
