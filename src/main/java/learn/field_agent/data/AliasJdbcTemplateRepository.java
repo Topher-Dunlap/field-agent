@@ -36,6 +36,7 @@ public class AliasJdbcTemplateRepository implements AliasRepository{
                 .findFirst().orElse(null);
     }
 
+
     @Override
     public Alias add(Alias alias) {
         final String sql = "insert into alias (name, persona, agent_id) " + " values (?,?,?);";

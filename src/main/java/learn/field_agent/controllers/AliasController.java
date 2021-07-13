@@ -30,6 +30,11 @@ public class AliasController {
         return service.findById(aliasId);
     }
 
+    @GetMapping("/withAgent/{aliasId}")
+    public Object findAliasAndAgent(@PathVariable int aliasId) {
+        return service.findById(aliasId);
+    }
+
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody Alias alias) {
         Result<Alias> result = service.add(alias);

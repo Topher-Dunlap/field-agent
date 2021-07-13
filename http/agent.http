@@ -4,7 +4,7 @@ GET http://localhost:8080/api/agent HTTP/1.1
 
 ###
 
-GET http://localhost:8080/api/agent/1 HTTP/1.1
+GET http://localhost:8080/api/agent/2 HTTP/1.1
 
 ###
 

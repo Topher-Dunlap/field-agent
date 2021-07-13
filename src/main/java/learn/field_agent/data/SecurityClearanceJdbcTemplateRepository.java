@@ -32,7 +32,7 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
 
     @Override
     public SecurityClearance findById(int security_clearance_id) {
-        final String sql = "select security_clearance_id, name name "
+        final String sql = "select security_clearance_id, name security_clearance_name "
                 + "from security_clearance "
                 + "where security_clearance_id = ?;";
         return jdbcTemplate.query(sql, new SecurityClearanceMapper(), security_clearance_id)

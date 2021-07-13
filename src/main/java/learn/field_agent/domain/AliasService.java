@@ -1,25 +1,29 @@
 package learn.field_agent.domain;
 
+import learn.field_agent.data.AgentRepository;
 import learn.field_agent.data.AliasRepository;
 import learn.field_agent.models.Alias;
+import learn.field_agent.models.AliasAndAgent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class AliasService {
-    private final AliasRepository repository;
+    private final AliasRepository aliasRepository;
+    private final AgentRepository agentRepository;
 
-    public AliasService(AliasRepository repository) {
-        this.repository = repository;
+    public AliasService(AliasRepository aliasRepository, AgentRepository agentRepository) {
+        this.aliasRepository = aliasRepository;
+        this.agentRepository = agentRepository;
     }
 
     public List<Alias> findAll() {
-        return repository.findAll();
+        return aliasRepository.findAll();
     }
 
     public Alias findById(int aliasId) {
-        return repository.findById(aliasId);
+        return aliasRepository.findById(aliasId);
     }
 
     public Result<Alias> add(Alias alias) {
@@ -33,7 +37,7 @@ public class AliasService {
             return result;
         }
 
-        alias = repository.add(alias);
+        alias = aliasRepository.add(alias);
         result.setPayload(alias);
         return result;
     }
@@ -49,7 +53,7 @@ public class AliasService {
             return result;
         }
 
-        if (!repository.update(alias)) {
+        if (!aliasRepository.update(alias)) {
             String msg = String.format("aliasId: %s, not found", alias.getAgent_id());
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
@@ -58,7 +62,7 @@ public class AliasService {
     }
 
     public boolean deleteById(int aliasId) {
-        return repository.deleteById(aliasId);
+        return aliasRepository.deleteById(aliasId);
     }
 
     private Result<Alias> validate(Alias newAlias) {
