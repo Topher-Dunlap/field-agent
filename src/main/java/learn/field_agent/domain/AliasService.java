@@ -3,7 +3,6 @@ package learn.field_agent.domain;
 import learn.field_agent.data.AgentRepository;
 import learn.field_agent.data.AliasRepository;
 import learn.field_agent.models.Alias;
-import learn.field_agent.models.AliasAndAgent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +10,9 @@ import java.util.List;
 @Service
 public class AliasService {
     private final AliasRepository aliasRepository;
-    private final AgentRepository agentRepository;
 
-    public AliasService(AliasRepository aliasRepository, AgentRepository agentRepository) {
+    public AliasService(AliasRepository aliasRepository) {
         this.aliasRepository = aliasRepository;
-        this.agentRepository = agentRepository;
     }
 
     public List<Alias> findAll() {
@@ -61,9 +58,7 @@ public class AliasService {
         return result;
     }
 
-    public boolean deleteById(int aliasId) {
-        return aliasRepository.deleteById(aliasId);
-    }
+    public boolean deleteById(int aliasId) { return aliasRepository.deleteById(aliasId); }
 
     private Result<Alias> validate(Alias newAlias) {
         Result<Alias> result = new Result<>();

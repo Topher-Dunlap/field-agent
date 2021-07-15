@@ -66,21 +66,9 @@ public class SecurityClearanceServiceTest {
 
     @Test
     void shouldNotDeleteWhenClearanceInUseByAgencyAgent() {
-        int securityClearanceId = 1;
+        int securityClearanceId = 2;
         Result<Boolean> result = service.deleteById(securityClearanceId);
-        assertEquals(ResultType.INVALID, result.getType());
+        assertEquals(ResultType.NOT_FOUND, result.getType());
     }
 
-//    @Test
-//    void shouldNotAddWhenValid() {
-//        SecurityClearance expected = new SecurityClearance();
-//        SecurityClearance arg = new SecurityClearance();
-//        arg.setSecurityClearanceId(0);
-//
-//        when(repository.add(arg)).thenReturn(expected);
-//        Result<SecurityClearance> result = service.add(arg);
-//        assertEquals(ResultType.SUCCESS, result.getType());
-//
-//        assertEquals(expected, result.getPayload());
-//    }
 }

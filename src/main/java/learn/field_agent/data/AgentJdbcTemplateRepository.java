@@ -105,7 +105,7 @@ public class AgentJdbcTemplateRepository implements AgentRepository {
     private void addAgencies(Agent agent) {
 
         final String sql = "select aa.agency_id, aa.agent_id, aa.identifier, aa.activation_date, aa.is_active, "
-                + "sc.security_clearance_id, sc.name security_clearance_name, "
+                + "sc.security_clearance_id, security_clearance_name, "
                 + "a.short_name, a.long_name "
                 + "from agency_agent aa "
                 + "inner join agency a on aa.agency_id = a.agency_id "

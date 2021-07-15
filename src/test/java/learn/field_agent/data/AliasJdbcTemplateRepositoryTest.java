@@ -1,6 +1,5 @@
 package learn.field_agent.data;
 
-import learn.field_agent.models.Agent;
 import learn.field_agent.models.Alias;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

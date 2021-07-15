@@ -32,7 +32,7 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
 
     @Override
     public SecurityClearance findById(int security_clearance_id) {
-        final String sql = "select security_clearance_id, name security_clearance_name "
+        final String sql = "select security_clearance_id, security_clearance_name "
                 + "from security_clearance "
                 + "where security_clearance_id = ?;";
         return jdbcTemplate.query(sql, new SecurityClearanceMapper(), security_clearance_id)
@@ -42,7 +42,7 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
 
     @Override
     public SecurityClearance add(SecurityClearance securityClearance) {
-        final String sql = "insert into security_clearance (name) " + " values (?);";
+        final String sql = "insert into security_clearance (security_clearance_name)" + " values (?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -62,7 +62,7 @@ public class SecurityClearanceJdbcTemplateRepository implements SecurityClearanc
     @Override
     public boolean update(SecurityClearance securityClearance) {
         final String sql = "update security_clearance set "
-                + "name = ?"
+                + "security_clearance_name = ?"
                 + " where security_clearance_id = ?; ";
 
         return jdbcTemplate.update(sql, securityClearance.getName(), securityClearance.getSecurityClearanceId()) > 0;

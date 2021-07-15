@@ -4,6 +4,7 @@ import learn.field_agent.data.AliasRepository;
 import learn.field_agent.models.Alias;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class AliasServiceTest {
 
     @Autowired
@@ -58,9 +60,9 @@ public class AliasServiceTest {
     @Test
     void shouldNotDeleteWhenIdDoesNotExist() {
         int alias_id = 1000;
-        Result<Boolean> result = null;
+        Result<Boolean> result = new Result<>();
         result.setPayload(service.deleteById(alias_id));
-        assertEquals(ResultType.NOT_FOUND, result.getType());
+        assertEquals(false, result.getPayload());
     }
 
 }
