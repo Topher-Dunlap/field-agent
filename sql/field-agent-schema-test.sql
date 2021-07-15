@@ -34,7 +34,7 @@ create table agent (
 
 create table security_clearance (
     security_clearance_id int primary key auto_increment,
-    `name` varchar(50) not null
+    security_clearance_name varchar(50) not null
 );
 
 create table mission (
