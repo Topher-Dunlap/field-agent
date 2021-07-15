@@ -1,0 +1,27 @@
+### findAll()
+GET http://localhost:8080/api/security_clearance
+Accept: application/json
+
+### findById()
+GET http://localhost:8080/api/security_clearance/1
+Accept: application/json
+
+### add()
+POST  http://localhost:8080/api/security_clearance/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "security_clearance_name": "T Clearance"
+}
+
+### update()
+PUT http://localhost:8080/api/security_clearance/4 HTTP/1.1
+Content-Type: application/json
+
+{
+  "security_clearance_id": "4",
+  "name": "Z Clearance"
+}
+
+###
+DELETE http://localhost:8080/api/security_clearance/6 HTTP/1.1

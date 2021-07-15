@@ -5,7 +5,7 @@ import java.util.Objects;
 public class SecurityClearance {
 
     private int securityClearanceId;
-    private String name;
+    private String security_clearance_name;
 
     public int getSecurityClearanceId() {
         return securityClearanceId;
@@ -16,19 +16,19 @@ public class SecurityClearance {
     }
 
     public String getName() {
-        return name;
+        return security_clearance_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String security_clearance_name) {
+        this.security_clearance_name = security_clearance_name;
     }
 
     public SecurityClearance() {
     }
 
-    public SecurityClearance(int securityClearanceId, String name) {
+    public SecurityClearance(int securityClearanceId, String security_clearance_name) {
         this.securityClearanceId = securityClearanceId;
-        this.name = name;
+        this.security_clearance_name = security_clearance_name;
     }
 
     @Override
@@ -37,11 +37,11 @@ public class SecurityClearance {
         if (o == null || getClass() != o.getClass()) return false;
         SecurityClearance that = (SecurityClearance) o;
         return securityClearanceId == that.securityClearanceId &&
-                Objects.equals(name, that.name);
+                Objects.equals(security_clearance_name, that.security_clearance_name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(securityClearanceId, name);
+        return Objects.hash(securityClearanceId, security_clearance_name);
     }
 }

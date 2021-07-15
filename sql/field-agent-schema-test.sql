@@ -34,7 +34,7 @@ create table agent (
 
 create table security_clearance (
     security_clearance_id int primary key auto_increment,
-    `name` varchar(50) not null
+    security_clearance_name varchar(50) not null
 );
 
 create table mission (
@@ -100,14 +100,20 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+SET SQL_SAFE_UPDATES = 0;
+
 	delete from location;
-    alter table location auto_increment = 1;
-    delete from agency_agent;
+    alter table location AUTO_INCREMENT = 1;
+	delete from agency_agent;
+    alter table agency_agent AUTO_INCREMENT = 1;
 	delete from agency;
-	alter table agency auto_increment = 1;
-    delete from agent;
-    alter table agent auto_increment = 1;
-    
+    alter table agency AUTO_INCREMENT = 1;
+	truncate table alias;
+	delete from agent;
+    alter table agent AUTO_INCREMENT = 1;
+	delete from security_clearance;
+    alter table security_clearance AUTO_INCREMENT = 1;
+
     insert into agency(agency_id, short_name, long_name) values
         (1, 'ACME', 'Agency to Classify & Monitor Evildoers'),
         (2, 'MASK', 'Mobile Armored Strike Kommand'),
@@ -115,12 +121,12 @@ begin
         
 	insert into location (location_id, name, address, city, region, country_code, postal_code, agency_id)
 		values
-	(1, 'HQ', '123 Elm', 'Des Moines', 'IA', 'USA', '55555', 1),
-    (2, 'Safe House #1', 'A One Ave.', 'Walla Walla', 'WA', 'USA', '54321-1234', 1),
-    (3, 'HQ', '123 Elm', 'Test', 'WI', 'USA', '55555', 2),
-	(4, 'Remote', '999 Nine St.', 'Test', 'WI', 'USA', '55555', 2),
-	(5, 'HQ', '123 Elm', 'Test', 'WI', 'USA', '55555', 3), -- for delete tests
-	(6, 'Remote', '999 Nine St.', 'Test', 'WI', 'USA', '55555', 3);
+		(1, 'HQ', '123 Elm', 'Des Moines', 'IA', 'USA', '55555', 1),
+		(2, 'Safe House #1', 'A One Ave.', 'Walla Walla', 'WA', 'USA', '54321-1234', 1),
+		(3, 'HQ', '123 Elm', 'Test', 'WI', 'USA', '55555', 2),
+		(4, 'Remote', '999 Nine St.', 'Test', 'WI', 'USA', '55555', 2),
+		(5, 'HQ', '123 Elm', 'Test', 'WI', 'USA', '55555', 3), -- for delete tests
+		(6, 'Remote', '999 Nine St.', 'Test', 'WI', 'USA', '55555', 3);
         
 	insert into agent 
 		(first_name, middle_name, last_name, dob, height_in_inches) 
@@ -134,6 +140,17 @@ begin
 		('Ulises','B','Muhammad','2008-04-01',80),
 		('Phylys','Y','Howitt','1979-03-28',68);
         
+	insert into alias
+		(alias_id, `name`, persona, agent_id)
+    values
+		(1, 'Alford', 'Head butler of Batman', 2),
+		(2, 'Iron Man', 'Some kind of robot person', 3),
+		(3, 'Odd Man', 'A very odd man.', 4);
+        
+	insert into security_clearance values
+		(1, 'Secret'),
+		(2, 'Top Secret');
+        
 	insert into agency_agent 
 		(agency_id, agent_id, identifier, security_clearance_id, activation_date)
     select
@@ -146,12 +163,10 @@ begin
     inner join agent
     where agent.agent_id not in (6, 8)
     and agency.agency_id != 2;
+  
+SET SQL_SAFE_UPDATES = 1;
 
 end //
 -- 4. Change the statement terminator back to the original.
 delimiter ;
 
--- data
-insert into security_clearance values
-	(1, 'Secret'),
-    (2, 'Top Secret');
